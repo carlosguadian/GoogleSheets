@@ -7,21 +7,23 @@ A veces es necesario importar datos de otra hoja de cálculo, una columna o conj
 ### UTILIZACIÓN
 El uso no es complicado. Sólo tiene dos argumentos:
 * La URL de la que debe importar los datos. No es necesario poner toda la URL, con poner el identificador es suficiente (es la cadena alfanumérica final de la URL ne cuestión.
-* El rango que debe importar
+* El rango que se quiere importar
 
 ### CÓDIGO
 
-```IMPORTRANGE("https://docs.google.com/spreadsheets/d/abcd123abcd123"; "hoja!A1:C10")```
+`IMPORTRANGE("https://docs.google.com/spreadsheets/d/abcd123abcd123"; "hoja!A1:C10")`
 
 ## USO COMBINADO DE IMPORTRANGE
 Importar en una hoja el contenido de diferentes hojas una tras otra.
-Objetivo: Combinar datos de diferentes hojas de cálculo en una sola
+
+### OBJETIVO
+Combinar datos de diferentes hojas de cálculo en una sola
 
 ### EXPLICACIÓN
-Al usar la función filter sólo deja importar el rango de una columna. Por eso si son varias las columnas a importar se debe replicar el código cambiando el rango a la columna seleccionada.
+Al usar la función `FILTER` sólo deja importar el rango de una columna. Por eso si son varias las columnas a importar se debe replicar el código cambiando el rango a la columna seleccionada.
 
 La primera importación, en el código, incluye la cabecera de la columna, por eso las siguientes empiezan en la fila 2.
 
 ### CÓDIGO
 
-```={FILTER(IMPORTRANGE("1fII0RU9T6f0pWUrmfaXvU9fnYGVsU-dKorgke4962Vk";"matchimpulsa100!O1:O");LARGO(IMPORTRANGE("1fII0RU9T6f0pWUrmfaXvU9fnYGVsU-dKorgke4962Vk";"matchimpulsa100!O1:O")));FILTER(IMPORTRANGE("1fII0RU9T6f0pWUrmfaXvU9fnYGVsU-dKorgke4962Vk";"PartnerTech!O2:O");LARGO(IMPORTRANGE("1fII0RU9T6f0pWUrmfaXvU9fnYGVsU-dKorgke4962Vk";"PartnerTech!O2:O")));FILTER(IMPORTRANGE("1fII0RU9T6f0pWUrmfaXvU9fnYGVsU-dKorgke4962Vk";"PartnerIgualtat!O2:O");LARGO(IMPORTRANGE("1fII0RU9T6f0pWUrmfaXvU9fnYGVsU-dKorgke4962Vk";"PartnerIgualtat!O2:O")))}```
+`={FILTER(IMPORTRANGE("url página";"nombre pestaña1!O1:O");LARGO(IMPORTRANGE("url página";"nombre pestaña1!O1:O")));FILTER(IMPORTRANGE("url página";"nombre pestaña2!O2:O");LARGO(IMPORTRANGE("url página";"nombre pestaña2!O2:O")));FILTER(IMPORTRANGE("url página";"nombre pestaña3!O2:O");LARGO(IMPORTRANGE("url página";"nombre pestaña3!O2:O")))}`
